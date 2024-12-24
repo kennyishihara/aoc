@@ -1,18 +1,39 @@
 use std::io;
+use std::env;
+mod days;
+mod utils;
 
-struct Solution<'a> {
-    input: &'a str,
-    part1: &'a str,
-    part2: &'a str,
-}
-
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Which date?");
-    let mut input = String::new();
+    let mut day_input = String::new();
+    io::stdin()
+        .read_line(&mut day_input)
+        .expect("Failed to read the date.");
+    let day = day_input.trim();
 
-    io::stdin().read_line(&mut input).expect("Failed to read stdin. Make sure it's strings separated by space");
+    println!("Which part?");
+    let mut part_input = String::new();
+    io::stdin()
+        .read_line(&mut part_input)
+        .expect("Failed to read the part.");
+    let part = part_input.trim();
+    let cwd = env::current_dir()?;
+    let path = format!("{}/src/data/day{}_part{}.txt", cwd.display(), day, part);
+    println!("Path: {}", path); 
 
-    // let inputs: Vec<u32> = input.split_whitespace().map(|s| s.parse::<u32>().expect("Not an integer")).collect();
+    let result = match (day, part) {
+        ("1", "1") => days::day01::part1(&path),
+        ("1", "2") => days::day01::part2(&path),
+        _ => {
+            eprintln!("Invalid date or part specified.");
+            return Err(format!("Invalid day '{}' or part '{}'.", day, part).into());
+        }
+    };
 
+    match result {
+        Ok(answer) => println!("Answer: {}", answer),
+        Err(e) => eprintln!("Error: {}", e),
+    }
+
+    Ok(())
 }
-
