@@ -31,13 +31,13 @@ mod tests {
 
     #[test]
     fn test_part1() -> Result<(), Box<dyn std::error::Error>> {
-        assert_eq!(part1("src/data/day1_part1_sample.txt")?, 11);
+        assert_eq!(part1("src/data/day1_test.txt")?, 11);
         Ok(())
     }
 
     #[test]
     fn test_part2() -> Result<(), Box<dyn std::error::Error>> {
-        assert_eq!(part2("src/data/day1_part2_sample.txt")?, 31);
+        assert_eq!(part2("src/data/day1_test.txt")?, 31);
         Ok(())
     }
 }

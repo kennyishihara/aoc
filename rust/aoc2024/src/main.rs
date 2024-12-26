@@ -18,12 +18,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .expect("Failed to read the part.");
     let part = part_input.trim();
     let cwd = env::current_dir()?;
-    let path = format!("{}/src/data/day{}_part{}.txt", cwd.display(), day, part);
+    let path = format!("{}/src/data/day{}.txt", cwd.display(), day);
     println!("Path: {}", path); 
 
     let result = match (day, part) {
         ("1", "1") => days::day01::part1(&path),
         ("1", "2") => days::day01::part2(&path),
+        ("2", "1") => days::day02::part1(&path),
+        ("2", "2") => days::day02::part2(&path),
         _ => {
             eprintln!("Invalid date or part specified.");
             return Err(format!("Invalid day '{}' or part '{}'.", day, part).into());
