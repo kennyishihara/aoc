@@ -1,7 +1,7 @@
 use super::super::utils;
 
 pub fn part1(path: &str) -> Result<u32, std::io::Error> {
-    let buffer = utils::read_file_to_vec::<u16>(path)?;
+    let buffer = utils::read_file_as_nested_vecs::<u16>(path)?;
     let buffer_len = buffer.len();
     let mut safety_vec = vec![0; buffer_len];
     for n in 0..buffer_len {
@@ -14,7 +14,7 @@ pub fn part1(path: &str) -> Result<u32, std::io::Error> {
 }
 
 pub fn part2(path: &str) -> Result<u32, std::io::Error> {
-    let buffer = utils::read_file_to_vec::<u16>(path)?;
+    let buffer = utils::read_file_as_nested_vecs::<u16>(path)?;
     let buffer_len = buffer.len();
     let mut safety_vec = vec![0; buffer_len];
     for n in 0..buffer_len {

@@ -26,6 +26,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         ("1", "2") => days::day01::part2(&path),
         ("2", "1") => days::day02::part1(&path),
         ("2", "2") => days::day02::part2(&path),
+        ("3", "1") => days::day03::part1(&path),
+        ("3", "2") => days::day03::part2(&path),
         _ => {
             eprintln!("Invalid date or part specified.");
             return Err(format!("Invalid day '{}' or part '{}'.", day, part).into());

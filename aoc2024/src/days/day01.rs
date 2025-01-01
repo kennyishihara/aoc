@@ -1,7 +1,7 @@
 use super::super::utils;
 
 pub fn part1(path: &str) -> Result<u32, std::io::Error> {
-    let buffer = utils::read_file_to_vec::<u32>(path)?;
+    let buffer = utils::read_file_as_nested_vecs::<u32>(path)?;
     let mut left = buffer.iter().map(|l| l[0]).collect::<Vec<u32>>();
     let mut right = buffer.iter().map(|l| l[1]).collect::<Vec<u32>>();
     left.sort();
@@ -15,7 +15,7 @@ pub fn part1(path: &str) -> Result<u32, std::io::Error> {
 }
 
 pub fn part2(path: &str) -> Result<u32, std::io::Error> {
-    let buffer = utils::read_file_to_vec::<u32>(path)?;
+    let buffer = utils::read_file_as_nested_vecs::<u32>(path)?;
     let left = buffer.iter().map(|l| l[0]).collect::<Vec<u32>>();
     let right = buffer.iter().map(|l| l[1]).collect::<Vec<u32>>();
     let sum: u32 = left
